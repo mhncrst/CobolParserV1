@@ -11,5 +11,19 @@
     <extensions defaultExtensionNs="com.intellij">
         <toolWindow factoryClass="com.github.mhncrst.cobolparserv1.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
         <postStartupActivity implementation="com.github.mhncrst.cobolparserv1.startup.MyProjectActivity" />
+        <fileType
+                name="Cobol File"
+                implementationClass="com.github.mhncrst.cobolparserv1.CobolFileType"
+                fieldName="INSTANCE"
+                language="Cobol"
+                extensions="cbl"/>
+        <lang.parserDefinition
+                language="Cobol"
+                implementationClass="com.github.mhncrst.cobolparserv1.CobolParserDefinition"/>
+        <lang.syntaxHighlighterFactory
+                language="Cobol"
+                implementationClass="com.github.mhncrst.cobolparserv1.CobolSyntaxHighlighterFactory"/>
+        <colorSettingsPage
+                implementation="com.github.mhncrst.cobolparserv1.CobolColorSettingsPage"/>
     </extensions>
 </idea-plugin>

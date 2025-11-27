@@ -2,6 +2,14 @@ import org.jetbrains.changelog.Changelog
 import org.jetbrains.changelog.markdownToHTML
 import org.jetbrains.intellij.platform.gradle.TestFrameworkType
 
+sourceSets {
+    main {
+        java.srcDirs("src/main/gen")
+        // remove kotlin.srcDirs if present
+    }
+}
+
+
 plugins {
     id("java") // Java support
     alias(libs.plugins.kotlin) // Kotlin support

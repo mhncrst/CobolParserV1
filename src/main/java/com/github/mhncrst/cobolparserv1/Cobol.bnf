@@ -1,0 +1,54 @@
+{
+  parserClass="com.github.mhncrst.cobolparserv1.CobolParser"
+
+  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+  psiClassPrefix="Cobol"
+  psiImplClassSuffix="Impl"
+  psiPackage="com.github.mhncrst.cobolparserv1.psi"
+  psiImplPackage="com.github.mhncrst.cobolparserv1.psi.impl"
+
+  elementTypeHolderClass="com.github.mhncrst.cobolparserv1.CobolTypes"
+  elementTypeClass="com.github.mhncrst.cobolparserv1.CobolElementType"
+  tokenTypeClass="com.github.mhncrst.cobolparserv1.CobolTokenType"
+}
+
+cobolFile ::= identificationDivision dataDivision procedureDivision
+
+identificationDivision ::= LINENUMBER IDENTIFICATION DIVISION DOT programIdClause
+
+
+programIdClause ::= LINENUMBER PROGRAM_ID DOT IDENTIFIER DOT
+
+dataDivision ::= LINENUMBER DATA DIVISION DOT workingStorageSection
+
+workingStorageSection ::= LINENUMBER WORKING_STORAGE SECTION DOT dataDeclaration*
+
+dataDeclaration ::= LINENUMBER LEVELNUMBER IDENTIFIER dataDeclarationClause* DOT
+dataDeclarationClause ::= dataTypeClause | valueClause
+
+dataTypeClause ::= PIC picPattern
+picPattern ::= NUMBER LPAREN NUMBER RPAREN
+
+valueClause ::= VALUE literal
+literal ::= NUMBER |STRING_LITERAL
+
+procedureDivision ::= LINENUMBER PROCEDURE DIVISION DOT paragraphDeclaration*
+paragraphDeclaration ::= LINENUMBER procedureName DOT statement*
+
+statement ::=  perform-statement | stop-statement | display-statement
+
+perform-statement ::= LINENUMBER PERFORM procedureName performVaryingPhrase performUntilPhrase
+procedureName ::= IDENTIFIER
+performVaryingPhrase ::= VARYING IDENTIFIER FROM NUMBER BY NUMBER
+performUntilPhrase ::= UNTIL IDENTIFIER EQUALS NUMBER
+
+stop-statement ::= LINENUMBER STOP (RUN | literal) DOT
+literal ::= NUMBER | STRING_LITERAL
+
+display-statement ::= LINENUMBER DISPLAY (IDENTIFIER | literal)+ DOT
+
+
+private item_ ::= (property|COMMENT|CRLF)
+
+property ::= (KEY? SEPARATOR VALUE?) | KEY

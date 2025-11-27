@@ -1,0 +1,16 @@
+// This is a generated file. Not intended for manual editing.
+package com.github.mhncrst.cobolparserv1.psi;
+
+import java.util.List;
+import org.jetbrains.annotations.*;
+import com.intellij.psi.PsiElement;
+
+public interface CobolParagraphDeclaration extends PsiElement {
+
+  @NotNull
+  CobolProcedureName getProcedureName();
+
+  @NotNull
+  List<CobolStatement> getStatementList();
+
+}

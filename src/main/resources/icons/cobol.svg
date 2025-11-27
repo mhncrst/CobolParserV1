@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="16" height="16" viewBox="0 0 16 16">
+  <rect width="16" height="16" fill="#2d2d2d"/>
+  <text x="1" y="12"
+        font-family="Verdana"
+        font-size="7"
+        fill="#40e0d0"
+        font-weight="bold">CBL</text>
+</svg>
